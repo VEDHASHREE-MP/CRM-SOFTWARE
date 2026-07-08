@@ -1,0 +1,31 @@
+{
+  "name": "virtual-tech-crm",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "scripts": {
+    "frontend": "cd frontend && npm run dev",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run frontend\" \"wait-on http://localhost:5173 && electron .\"",
+    "build-frontend": "cd frontend && npm run build",
+    "dist": "npm run build-frontend && electron-builder"
+  },
+  "build": {
+    "appId": "com.virtualtech.crm",
+    "productName": "Virtual Tech CRM",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "electron": "^41.7.1",
+    "electron-builder": "latest",
+    "wait-on": "latest"
+  }
+}
